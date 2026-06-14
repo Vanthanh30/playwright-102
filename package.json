@@ -13,6 +13,7 @@
     "test:headed": "playwright test --project=chromium --headed",
     "test:debug": "playwright test --project=chromium --debug",
     "test:hyperexecute": "powershell -ExecutionPolicy Bypass -File scripts/run-hyperexecute.ps1",
+    "test:automation": "node --env-file=.env scripts/run-automation.mjs",
     "report": "playwright show-report",
     "typecheck": "tsc --noEmit"
   },

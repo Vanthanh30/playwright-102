@@ -98,6 +98,9 @@ export class AssertHelper {
           message: element.validationMessage.replace(
             'Please fill out this field.',
             'Please fill in this field.',
+          ).replace(
+            'Fill out this field',
+            'Please fill in this field.',
           ),
           valueMissing: element.validity.valueMissing,
         })),
