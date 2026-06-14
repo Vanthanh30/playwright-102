@@ -1,0 +1,50 @@
+---
+version: "0.1"
+globalTimeout: 90
+testSuiteTimeout: 60
+testSuiteStep: 60
+
+runson: ${matrix.os}
+
+matrix:
+  os:
+    - win
+    - linux
+
+runtime:
+  - language: node
+    version: "20"
+
+env:
+  HYPEREXECUTE: "true"
+  PLAYGROUND_URL: "https://www.testmuai.com/selenium-playground/"
+  TEST_MESSAGE: "Welcome to TestMu AI from HyperExecute"
+  EXECUTION_OS: "${matrix.os}"
+  PLAYWRIGHT_BROWSERS_PATH: ".playwright-cache"
+  LT_USERNAME: ${{.secrets.LT_USERNAME}}
+  LT_ACCESS_KEY: ${{.secrets.LT_ACCESS_KEY}}
+
+cacheKey: 'playwright-102-{{ checksum "package-lock.json" }}'
+cacheDirectories:
+  - node_modules
+  - .playwright-cache
+
+pre:
+  - npm install --prefer-offline --no-audit
+  - npx playwright install chromium
+
+testSuites:
+  - node node_modules/@playwright/test/cli.js test --project=chromium
+
+uploadArtefacts:
+  - name: playwright-102-artifacts
+    path:
+      - playwright-report/**
+      - test-results/**
+
+jobLabel:
+  - playwright-102
+  - typescript
+  - chromium
+  - multi-os
+  - vault-secrets

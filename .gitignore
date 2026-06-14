@@ -1,0 +1,13 @@
+node_modules/
+playwright-report/
+test-results/
+blob-report/
+artifacts/
+.hyperexecute/
+logs/
+hyperexecute-cli.log
+.updatedhyperexecute.yaml
+.playwright-cache/
+hyperexecute
+hyperexecute.exe
+.env

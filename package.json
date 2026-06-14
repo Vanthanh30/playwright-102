@@ -1,0 +1,24 @@
+{
+  "name": "playwright-102-hyperexecute",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "description": "Playwright 102 assignment for the TestMu AI Selenium Playground and HyperExecute.",
+  "scripts": {
+    "test": "playwright test",
+    "test:ci": "playwright test --project=chromium",
+    "test:headed": "playwright test --project=chromium --headed",
+    "test:debug": "playwright test --project=chromium --debug",
+    "test:hyperexecute": "powershell -ExecutionPolicy Bypass -File scripts/run-hyperexecute.ps1",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
